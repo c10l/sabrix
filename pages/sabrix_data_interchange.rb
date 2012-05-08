@@ -1,7 +1,7 @@
 class SabrixDataInterchange < BasicPage
   module HistoryTab
     def bla?
-      #raise if not @b.frame.table(:index => 3).tr(:class => 'treedatarow').cols.last.text == "Import completed without errors."
+      #TODO: raise if not @b.frame.table(:index => 3).tr(:class => 'treedatarow').cols.last.text == "Import completed without errors."
     end
   end
 
@@ -19,16 +19,13 @@ class SabrixDataInterchange < BasicPage
     end
 
     def upload_file(filename)
-      require 'pry-nav'
-      binding.pry
-
-      file_name = filename
-      button.click
+      self.file_name = filename
+      self.button.click
       SDIImportWizard.new @browser
     end
   end
 
-  attr_reader :tabs, :current_tab
+  attr_reader :tabs, :current_tab, :browser
 
   def initialize(browser, tab = :history)
     set_current_tab tab

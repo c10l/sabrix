@@ -6,10 +6,10 @@ class BasicPage
   def initialize(browser, tabs = {})
     @browser = browser
     @body    = @browser.frame
-    @body.p(class: 'copyrightLabel').wait_until_present
+    footer.wait_until_present
   end
 
-  def page_loaded?
-    @body.p(class: 'copyrightLabel').present?
+  def footer
+    @body.p(class: 'copyrightLabel')
   end
 end
