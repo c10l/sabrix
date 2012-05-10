@@ -1,29 +1,29 @@
 module Header
-  def menu_button
-    @browser.button(id: 'menuBtn')
+  include PageObject
+
+  button(:menu, id: 'menuBtn')
+
+  div(:system_menu, id: 'Utilities')
+  div(:logo,        class: 'logo')
+
+  select_list(:company, id: 'session_merchant_id')
+
+  def company=(value)
+    self.company_element.select(value)
+    wait_page_load
   end
 
   def menu_open?
-    @browser.div(id: 'Home').exists?
+    system_menu_element.exists?
   end
 
-  def open_menu
-    menu_button.click unless menu_open?
-  end
-
-  def open_system_menu
-    open_menu
-    @browser.div(id: 'Utilities').click unless @browser.div(id: 'MerchantsHdr').exists?
-  end
-
-  def home
-    @browser.div(class: 'logo').click
-    MainMenu.new @browser
+  def system_menu
+    self.system_menu_element.click unless @browser.div(id: 'MerchantsHdr').exists?
   end
 
   def open_sdi
-    open_menu
-    open_system_menu
+    menu
+    system_menu
     @browser.div(id: 'SDIHistory').click
     SabrixDataInterchange.new @browser
   end

@@ -10,10 +10,18 @@ GEM
       addressable
     method_source (0.7.1)
     multi_json (1.3.4)
+    page-object (0.6.6)
+      selenium-webdriver (>= 2.21.2)
+      watir-webdriver (>= 0.5.5)
     pry (0.9.8.4)
       coderay (~> 1.0.5)
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
+    pry (0.9.8.4-x86-mingw32)
+      coderay (~> 1.0.5)
+      method_source (~> 0.7.1)
+      slop (>= 2.4.4, < 3)
+      win32console (~> 1.3)
     pry-nav (0.2.0)
       pry (~> 0.9.8.1)
     require_all (1.2.1)
@@ -27,13 +35,16 @@ GEM
     slop (2.4.4)
     watir-webdriver (0.5.6)
       selenium-webdriver (>= 2.18.0)
+    win32console (1.3.1-x86-mingw32)
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
+  page-object
   pry
   pry-nav
   require_all
   watir-webdriver
+  win32console

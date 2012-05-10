@@ -1,15 +1,18 @@
 class BasicPage
+  include PageObject
   include Header
   
-  attr_reader :body, :header
+  FRAME_ID = 'BodyFrame'
 
-  def initialize(browser, tabs = {})
-    @browser = browser
-    @body    = @browser.frame
-    footer.wait_until_present
+  def initialize_page
+    wait_page_load
   end
 
-  def footer
-    @body.p(class: 'copyrightLabel')
+  def wait_page_load
+  	footer_element.when_present(10)
+  end
+
+  in_frame(id: FRAME_ID) do |frame|
+    paragraph(:footer, class: 'copyrightLabel', frame: frame)
   end
 end
