@@ -9,10 +9,15 @@ class TransEditorsPage < BasicPage
     button(:te_group_actions, text: 'Actions', index: 1, frame: frame)
     
     select_list(:te_group, id: 'FILTER_GROUP_ID', frame: frame)
+    table(:editors_table, class: 'datarowsmaster', frame: frame)
   end
 
   def te_group=(value)
-    self.te_group = value
+    self.te_group_element.select value
     wait_page_load
+  end
+
+  def editors
+    self.editors_table_element
   end
 end

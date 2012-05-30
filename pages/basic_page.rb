@@ -9,7 +9,7 @@ class BasicPage
   end
 
   def wait_page_load
-  	footer_element.when_present(10)
+   	footer_element.when_present(10)
   end
 
   in_frame(id: FRAME_ID) do |frame|

@@ -8,3 +8,4 @@ Bundler.require
 require 'watir-webdriver/wait'
 
 require_all File.expand_path('../../pages/**/*.rb', __FILE__)
+require_all File.expand_path('../../vendor/**/*.rb', __FILE__)
